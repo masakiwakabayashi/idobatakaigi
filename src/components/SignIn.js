@@ -79,6 +79,15 @@ export default function SignIn({setName}) {
             name="name"
             autoFocus
             onChange={(e)=>setString(e.target.value)}
+            onKeyDown={(e)=>{
+              // エンターキーを押した時にコンソールに出してるのはこれ
+              // e.keyで押したキーを取っている
+              console.log({key:e.key});
+              if(e.key === 'Enter'){
+                // エンターで発生するイベントをキャンセルしている
+                e.preventDefault();
+              }
+            }}
           />
           <Button
             type="button"
