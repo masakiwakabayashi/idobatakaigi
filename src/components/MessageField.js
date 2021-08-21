@@ -2,9 +2,10 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 import { useState } from 'react';
 
+import { pushMessage } from '../firebase';
+
 const MessageField = ({name,setText,text})=>{
   const [ isComposed, setISComposed] = useState(false);
-  console.log({text});
 
 
   return <TextField 
@@ -23,6 +24,7 @@ const MessageField = ({name,setText,text})=>{
 
     if(e.key === 'Enter'){
       console.log('push message to firebase');
+      pushMessage({name: 'はむさん', text});
       setText('');
       // エンターで発生するイベントをキャンセルしている
       e.preventDefault();
